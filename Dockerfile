@@ -11,7 +11,7 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 # Use a lightweight Java image to run the application
-FROM openjdk:17-:17-jre-slim
+FROM bellsoft/liberica-openjdk-debian:17
 
 # Set the working directory
 WORKDIR /app
