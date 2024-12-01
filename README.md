@@ -39,28 +39,28 @@ Here are the details to set up an end-to-end Jenkins pipeline for a Java applica
 
 Steps:
 
-1. Configuring the Jenkins Environment
-• Install Jenkins and set it up with the necessary plugins like Git, Pipeline, and SonarQube for static code analysis.
-• Create credentials for secure access to external services (DockerHub, GitHub, Sonarqube ).
+#### Configuring the Jenkins Environment
+1. Install Jenkins and set it up with the necessary plugins like Git, Pipeline, and SonarQube for static code analysis.
+2. Create credentials for secure access to external services (DockerHub, GitHub, Sonarqube ).
 
-2. Create a new Jenkins pipeline:
-• In Jenkins, create a new pipeline job and configure it with the Git repository URL for the Java application.
-• Add a Jenkinsfile to the Git repository to define the pipeline stages.
+#### Create a new Jenkins pipeline:
+1. In Jenkins, create a new pipeline job and configure it with the Git repository URL for the Java application.
+2. Add a Jenkinsfile to the Git repository to define the pipeline stages.
    ![Jenkinsconfig](https://github.com/user-attachments/assets/adceab71-2e0b-4744-b030-fe7d74e31bd0)
    ![Jenkinsconfig2](https://github.com/user-attachments/assets/e067330b-7e46-4f9d-842c-033c0dc192a6)
 
-3. Writing the Jenkinsfile with the following stages:
-• Build: Compiled the application using Maven.
-• Test: Ran unit tests to ensure code quality.
-• Static Analysis: Integrated SonarCloud to perform code analysis and enforce quality gates.
-• Docker Build & Push: Built a Docker image of the application and pushed it to DockerHub.
+#### Writing the Jenkinsfile with the following stages:
+1. Build: Compiled the application using Maven.
+2. Test: Ran unit tests to ensure code quality.
+3. Static Analysis: Integrated SonarCloud to perform code analysis and enforce quality gates.
+4. Docker Build & Push: Built a Docker image of the application and pushed it to DockerHub.
 
-4. Setting Up the Application Environment
-• Use Minikube to create a local Kubernetes cluster for deployment testing.
-• Deploy the application using ArgoCD.
+#### Setting Up the Application Environment
+1. Use Minikube to create a local Kubernetes cluster for deployment testing.
+2. Deploy the application using ArgoCD.
 
-5. Testing & Final Deployment
-• Verified the end-to-end functionality of the CI pipeline by running successful builds, Docker image pushes, and Kubernetes deployments.
+#### Testing & Final Deployment
+1. Verified the end-to-end functionality of the CI pipeline by running successful builds, Docker image pushes, and Kubernetes deployments.
 
 
 This end-to-end Jenkins pipeline will automate the entire CI/CD process for a Java application, from code checkout to production deployment, using popular tools like SonarQube, Argo CD and Kubernetes.
