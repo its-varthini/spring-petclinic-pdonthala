@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       // Select a Docker image to run the below build, test on- Agent or VM
-      image 'abhishekf5/maven-abhishek-docker-agent:v1'
+      image 'maven:3.8.6-eclipse-temurin-17'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
@@ -66,4 +66,66 @@ pipeline {
         }
     }
   }
+}
+/////////////////////////////////////////////////
+pipeline {
+    agent {
+        docker { 
+            image 'maven:3.8.6-eclipse-temurin-17' 
+        }
+    }
+    environment {
+        DOCKER_IMAGE = 'your-dockerhub-username/spring-petclinic:latest'
+        DOCKER_CREDENTIALS = 'dockerhub-credentials-id' // Replace with your Jenkins credential ID
+        SONAR_TOKEN = 'your-sonarcloud-token'          // Replace with your SonarCloud token
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the source code from the repository
+                checkout scm
+            }
+        }
+        stage('Build & Test') {
+            steps {
+                // Build and test the application
+                sh 'mvn clean package'
+            }
+        }
+        stage('Static Code Analysis') {
+            steps {
+                // Perform static code analysis using SonarCloud
+                sh '''
+                mvn sonar:sonar \
+                    -Dsonar.projectKey=spring-petclinic \
+                    -Dsonar.organization=your-sonarcloud-organization \
+                    -Dsonar.host.url=https://sonarcloud.io \
+                    -Dsonar.login=$SONAR_TOKEN
+                '''
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                // Build the Docker image
+                sh "docker build -t $DOCKER_IMAGE ."
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                // Log in to Docker Hub and push the image
+                script {
+                    docker.withRegistry('', DOCKER_CREDENTIALS) {
+                        sh "docker push $DOCKER_IMAGE"
+                    }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            // Clean up workspace and Docker dangling images
+            cleanWs()
+            sh 'docker system prune -f'
+        }
+    }
 }
