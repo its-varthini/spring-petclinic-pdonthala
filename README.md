@@ -55,10 +55,10 @@ Steps:
 3. Static Analysis: Integrated SonarCloud to perform code analysis and enforce quality gates.
 4. Docker Build & Push: Built a Docker image of the application and pushed it to DockerHub.
 
-![Build](https://github.com/user-attachments/assets/06fb9c0d-5ce8-4d99-9ea1-ffe601fcde72)
-
 Note: I used a docker image "pxdonthala/mavdocim:latest" as Jenkins agent instead of a VM. The image has maven, jdk, docker installed.
 
+![Build](https://github.com/user-attachments/assets/06fb9c0d-5ce8-4d99-9ea1-ffe601fcde72)
+![Hub](https://github.com/user-attachments/assets/0d6fafe3-5dbc-476d-9ae6-13eaaf85552c)
 
 #### Setting Up the Application Environment
 1. Use Minikube to create a local Kubernetes cluster for deployment testing.
