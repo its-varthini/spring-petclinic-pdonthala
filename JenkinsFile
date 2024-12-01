@@ -53,6 +53,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
           sh '''
+            git config --global --add safe.directory /var/lib/jenkins/workspace/SpringPet
             BUILD_NUMBER=${BUILD_NUMBER}
             sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" k8s/deployment.yml
             git add k8s/deployment.yml
