@@ -53,7 +53,10 @@ pipeline {
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
-                    git clone https://$GITHUB_TOKEN@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git .
+                    if [ ! -d ".git" ]; then
+                        git clone https://$GITHUB_TOKEN@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git .
+                    else echo "Repo Exists"
+                    fi
                     git config user.email "pd@gmail.com"
                     git config user.name "pdonthala"
                     BUILD_NUMBER=${BUILD_NUMBER}
