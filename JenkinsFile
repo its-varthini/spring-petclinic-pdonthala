@@ -32,7 +32,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "pxdonthala/sprint-petclinic-CICD:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "pxdonthala/sprint-petclinic:${BUILD_NUMBER}"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
       steps {
