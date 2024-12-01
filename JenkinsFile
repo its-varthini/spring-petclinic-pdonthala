@@ -54,7 +54,7 @@ pipeline {
         withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
           sh '''
             # Clone the repository if it doesn't already exist
-            //if [ ! -d ".git" ]; then
+            //if [ ! -d ".git" ]; //then
             git clone https://$GITHUB_TOKEN@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git .
             //fi
             git config user.name "pdonthala"
