@@ -53,21 +53,19 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
           sh '''
-          # Clone the repository if it doesn't already exist
-          if [ ! -d ".git" ]; then
+            # Clone the repository if it doesn't already exist
+            if [ ! -d ".git" ]; then
             git clone https://$GITHUB_TOKEN@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git .
-          fi
-          git config user.name "pdonthala"
-          git config user.email "pdonthala@gmail.com"
-        '''
-          sh '''
+            fi
+            git config user.name "pdonthala"
+            git config user.email "pdonthala@gmail.com"
             BUILD_NUMBER=${BUILD_NUMBER}
             sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" k8s/deployment.yml
             git add k8s/deployment.yml
             git commit -m "Update deployment image to version ${BUILD_NUMBER}"
             git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
           '''
-         }
+        }
       }
     }
   }
