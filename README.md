@@ -50,10 +50,15 @@ Steps:
    ![Jenkinsconfig2](https://github.com/user-attachments/assets/e067330b-7e46-4f9d-842c-033c0dc192a6)
 
 #### Writing the Jenkinsfile with the following stages:
-1. Build: Compiled the application using Maven.
+1. Build: Compiled the application using Maven. 
 2. Test: Ran unit tests to ensure code quality.
 3. Static Analysis: Integrated SonarCloud to perform code analysis and enforce quality gates.
 4. Docker Build & Push: Built a Docker image of the application and pushed it to DockerHub.
+
+![Build](https://github.com/user-attachments/assets/06fb9c0d-5ce8-4d99-9ea1-ffe601fcde72)
+
+Note: I used a docker image "pxdonthala/mavdocim:latest" as Jenkins agent instead of a VM. The image has maven, jdk, docker installed.
+
 
 #### Setting Up the Application Environment
 1. Use Minikube to create a local Kubernetes cluster for deployment testing.
