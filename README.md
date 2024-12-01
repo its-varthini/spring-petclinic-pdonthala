@@ -1,6 +1,6 @@
 # Spring based Java web application- Petclinic
  
-Petclinic is a Spring Boot application built using Maven. Sprint Boot dependencies are handled using the pom.xml at the root directory of the repository.
+Petclinic is a Spring Boot application built using Maven. This end-to-end Jenkins pipeline will automate the entire CI/CD process from code checkout to production deployment.
 
 ## Execute the application locally and access it using your browser
 
@@ -46,16 +46,24 @@ Steps:
 #### Create a new Jenkins pipeline:
 1. In Jenkins, create a new pipeline job and configure it with the Git repository URL for the Java application.
 2. Add a Jenkinsfile to the Git repository to define the pipeline stages.
+
    ![Jenkinsconfig](https://github.com/user-attachments/assets/adceab71-2e0b-4744-b030-fe7d74e31bd0)
+
    ![Jenkinsconfig2](https://github.com/user-attachments/assets/e067330b-7e46-4f9d-842c-033c0dc192a6)
 
 #### Writing the Jenkinsfile with the following stages:
 1. Build: Compiled the application using Maven. 
+
 ![Build](https://github.com/user-attachments/assets/06fb9c0d-5ce8-4d99-9ea1-ffe601fcde72)
+
 2. Test: Ran unit tests to ensure code quality.
+
 3. Static Analysis: Integrated SonarCloud to perform code analysis and enforce quality gates.
+
 ![Screenshot 2024-12-01 150547](https://github.com/user-attachments/assets/1cd4b5a4-5ebc-48dc-8210-9c2ab1a90a3c)
+
 4. Docker Build & Push: Built a Docker image of the application and pushed it to DockerHub.
+
 ![Hub](https://github.com/user-attachments/assets/0d6fafe3-5dbc-476d-9ae6-13eaaf85552c)
 
 Note: I used a docker image "pxdonthala/mavdocim:latest" as Jenkins agent instead of a VM. The image has maven, jdk, docker installed.
@@ -76,13 +84,17 @@ References:
 
 
 Note: To access the ArgoCD server, I added a NAT rule to forward traffic from my VM's external IP to the Minikube VM
+
 ![Screenshot 2024-12-02 012404](https://github.com/user-attachments/assets/4afdc728-a7f0-4d9b-9312-7c1039fde33e)
+
 ![Screenshot 2024-12-02 012619](https://github.com/user-attachments/assets/72f0aca1-d074-4a28-9ff4-eb12415339db)
+
 ![Screenshot 2024-12-02 023227](https://github.com/user-attachments/assets/c971c24c-1938-4e20-b118-e652073cc6b7)
+
 ![Screenshot 2024-12-02 020107](https://github.com/user-attachments/assets/92b24ea5-a5a9-4815-9d9a-804f2611fce8)
 
 #### Testing & Final Deployment
 1. Verified the end-to-end functionality of the CI pipeline by running successful builds, Docker image pushes, and Kubernetes deployments.
 
 
-This end-to-end Jenkins pipeline will automate the entire CI/CD process for a Java application, from code checkout to production deployment, using popular tools like SonarQube, Argo CD and Kubernetes.
+
