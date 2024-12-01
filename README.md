@@ -64,6 +64,11 @@ Note: I used a docker image "pxdonthala/mavdocim:latest" as Jenkins agent instea
 1. Use Minikube to create a local Kubernetes cluster for deployment testing.
 2. Deploy the application using ArgoCD.
 
+References: 
+To install minikube: https://minikube.sigs.k8s.io/docs/
+To install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+To install ArgoCD using Operator Lifecycle Manager: https://operatorhub.io/operator/argocd-operator
+
 #### Testing & Final Deployment
 1. Verified the end-to-end functionality of the CI pipeline by running successful builds, Docker image pushes, and Kubernetes deployments.
 
