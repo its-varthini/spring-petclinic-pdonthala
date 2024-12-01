@@ -27,23 +27,12 @@ docker build -t spring-petclinic:v1 .
 ```
 docker run -d -p 8080:8080 -t spring-petclinic:v1
 ```
+![image](https://github.com/user-attachments/assets/c2dcffdb-85d3-4f16-af3e-aa05df0f51cf)
 
 Access the application on `http://<ip-address>:8080`
+
+![image](https://github.com/user-attachments/assets/669d9ef1-df20-49ee-a97e-ee2448436e40)
 
 
 ## Next Steps
 
-### Configure a Sonar Server locally
-
-```
-apt install unzip
-adduser sonarqube
-wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
-unzip *
-chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
-chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
-cd sonarqube-9.4.0.54424/bin/linux-x86-64/
-./sonar.sh start
-```
-
-Hurray !! Now you can access the `SonarQube Server` on `http://<ip-address>:9000` 
