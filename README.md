@@ -3,16 +3,16 @@
 Petclinic is a Spring Boot application built using Maven. This project demonstrates a complete CI/CD pipeline for deploying a Java-based Pet Clinic application. The pipeline integrates Jenkins for Continuous Integration (CI) and ArgoCD for Continuous Deployment (CD), leveraging Minikube for Kubernetes-based application deployment.
 
 ### Key Features:
-• CI with Jenkins: Automates building, testing, and Docker image creation.
-• Static Code Analysis: Integrates SonarCloud to ensure code quality.
-• CD with ArgoCD: Deploys the application to a Kubernetes cluster using GitOps principles.
-• Kubernetes Deployment: Uses YAML manifests to define and manage application resources in Minikube.
-• Docker Integration: Builds and pushes Docker images to DockerHub for containerized deployment.
+1. CI with Jenkins: Automates building, testing, and Docker image creation.
+2. Static Code Analysis: Integrates SonarCloud to ensure code quality.
+3. CD with ArgoCD: Deploys the application to a Kubernetes cluster using GitOps principles.
+4. Kubernetes Deployment: Uses YAML manifests to define and manage application resources in Minikube.
+5. Docker Integration: Builds and pushes Docker images to DockerHub for containerized deployment.
 
 ### Tech Stack:
-• Jenkins, Docker, SonarQube, ArgoCD
-• Kubernetes (Minikube), Maven
-• Azure Linux VM for hosting the CI/CD environment
+1. Jenkins, Docker, SonarQube, ArgoCD
+2. Kubernetes (Minikube), Maven
+3. Azure Linux VM for hosting the CI/CD environment
 
 ## Execute the application locally and access it using your browser
 
