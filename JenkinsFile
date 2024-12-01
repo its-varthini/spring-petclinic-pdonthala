@@ -2,7 +2,7 @@ pipeline {
   agent {
     docker {
       // Select a Docker image to run the below build, test on- Agent or VM
-      image 'maven:3.8.6-eclipse-temurin-17'
+      image 'pxdonthala/mavdocim:latest'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
