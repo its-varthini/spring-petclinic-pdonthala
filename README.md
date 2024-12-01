@@ -51,23 +51,35 @@ Steps:
 
 #### Writing the Jenkinsfile with the following stages:
 1. Build: Compiled the application using Maven. 
+![Build](https://github.com/user-attachments/assets/06fb9c0d-5ce8-4d99-9ea1-ffe601fcde72)
 2. Test: Ran unit tests to ensure code quality.
 3. Static Analysis: Integrated SonarCloud to perform code analysis and enforce quality gates.
+![Screenshot 2024-12-01 150547](https://github.com/user-attachments/assets/1cd4b5a4-5ebc-48dc-8210-9c2ab1a90a3c)
 4. Docker Build & Push: Built a Docker image of the application and pushed it to DockerHub.
+![Hub](https://github.com/user-attachments/assets/0d6fafe3-5dbc-476d-9ae6-13eaaf85552c)
 
 Note: I used a docker image "pxdonthala/mavdocim:latest" as Jenkins agent instead of a VM. The image has maven, jdk, docker installed.
 
-![Build](https://github.com/user-attachments/assets/06fb9c0d-5ce8-4d99-9ea1-ffe601fcde72)
-![Hub](https://github.com/user-attachments/assets/0d6fafe3-5dbc-476d-9ae6-13eaaf85552c)
 
 #### Setting Up the Application Environment
 1. Use Minikube to create a local Kubernetes cluster for deployment testing.
+![Screenshot 2024-12-01 214914](https://github.com/user-attachments/assets/da8f44ce-93df-4e76-8a0c-eefaed115d7d)
+
 2. Deploy the application using ArgoCD.
+![Screenshot 2024-12-01 210825](https://github.com/user-attachments/assets/6ffdb0a8-dd41-467c-9dc3-39698885e0c0)
 
 References: 
-To install minikube: https://minikube.sigs.k8s.io/docs/
-To install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
-To install ArgoCD using Operator Lifecycle Manager: https://operatorhub.io/operator/argocd-operator
+1. To install minikube: https://minikube.sigs.k8s.io/docs/
+2. To install kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+3. To install ArgoCD using Operator Lifecycle Manager: https://operatorhub.io/operator/argocd-operator
+
+
+
+Note: To access the ArgoCD server, I added a NAT rule to forward traffic from my VM's external IP to the Minikube VM
+![Screenshot 2024-12-02 012404](https://github.com/user-attachments/assets/4afdc728-a7f0-4d9b-9312-7c1039fde33e)
+![Screenshot 2024-12-02 012619](https://github.com/user-attachments/assets/72f0aca1-d074-4a28-9ff4-eb12415339db)
+![Screenshot 2024-12-02 023227](https://github.com/user-attachments/assets/c971c24c-1938-4e20-b118-e652073cc6b7)
+![Screenshot 2024-12-02 020107](https://github.com/user-attachments/assets/92b24ea5-a5a9-4815-9d9a-804f2611fce8)
 
 #### Testing & Final Deployment
 1. Verified the end-to-end functionality of the CI pipeline by running successful builds, Docker image pushes, and Kubernetes deployments.
