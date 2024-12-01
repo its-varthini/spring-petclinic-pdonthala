@@ -54,7 +54,7 @@ pipeline {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                 sh '''
                     git status
-                    git config --global --add safe.directory '*'
+                    git config --global --add safe.directory /var/lib/jenkins/workspace/SpringPet
                     git config user.email "puja08niki27@gmail.com"
                     git config user.name "pdonthala"
                     BUILD_NUMBER=${BUILD_NUMBER}
