@@ -28,8 +28,7 @@ pipeline {
      stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "spring-petclinic-pdonthala"
-            GIT_USER_NAME = "its-varthini"
-        
+                   
         }
         steps {
          script {
