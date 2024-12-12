@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: workload
-          image: varthinidochub/sprint-petclinic:${BUILD_NUMBER}
+          image: varthinidochub/sprint-petclinic:latest
           ports:
             - name: http
               containerPort: 8080
